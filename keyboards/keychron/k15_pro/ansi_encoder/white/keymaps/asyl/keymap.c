@@ -23,6 +23,8 @@ enum layers {
     WIN_FN,
 };
 
+enum custom_macros { LOG_OUT = SAFE_RANGE, N_FD_BK };
+
 // Left-hand home row mods
 #define HOME_A LSFT_T(KC_A)
 #define HOME_S LCTL_T(KC_S)
@@ -35,11 +37,36 @@ enum layers {
 #define HOME_L RCTL_T(KC_L)
 #define HOME_SCLN RSFT_T(KC_SCLN)
 
+// Macro Definitions
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        // for basic strings
+        case N_FD_BK:
+            if (record->event.pressed) {
+                SEND_STRING("No feedback");
+                return false;
+            }
+
+        // for more complex macros (want to add modifiers, etc.)
+        case LOG_OUT:
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_LCTL);
+                register_code(KC_Q);
+                unregister_code(KC_Q);
+                unregister_code(KC_LCTL);
+                unregister_code(KC_LGUI);
+                return false;
+            }
+    }
+    return true;
+};
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_BASE] = LAYOUT_90_ansi(
-        KC_MUTE,    KC_ESC,   KC_BRID,  KC_BRIU,  KC_MCTL,  KC_LPAD,  BL_DOWN,   BL_UP,    KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_INS,             KC_DEL,
-        MC_1,       KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_PGUP,
+        KC_MUTE,    KC_ESC,   KC_BRID,  KC_BRIU,  KC_MCTL,  KC_LPAD,  BL_DOWN,   BL_UP,    KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  LOG_OUT,             KC_DEL,
+        N_FD_BK,       KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_PGUP,
         MC_2,       KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_PGDN,
         MC_3,       KC_CAPS,  HOME_A,   HOME_S,   HOME_D,   HOME_F,   KC_G,      KC_H,     HOME_J,   HOME_K,   HOME_L,   HOME_SCLN,KC_QUOT,  KC_ENT,   KC_HOME,
         MC_4,       _______,  KC_Z,     KC_X,   KC_C,   KC_V,    KC_B,     MO(MAC_FN),     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  _______,  KC_UP,
@@ -52,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,    _______,  BT_HST1,  BT_HST2,  BT_HST3,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
         _______,    BL_TOGG,  BL_STEP,  BL_UP,    _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
         _______,    _______,  _______,  BL_DOWN,  _______,  _______,  _______,   KC_LEFT,  KC_DOWN,  KC_UP,  KC_RIGHT,   _______,    _______,            _______,            _______,
-        _______,    _______,            _______,  _______,  _______,  _______,   BAT_LVL,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,  _______,  _______,
+        KC_SNAP,    _______,            _______,  _______,  _______,  _______,   BAT_LVL,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,  _______,  _______,
         _______,    _______,  _______,            _______,  _______,  _______,             _______,            _______,            _______,            _______,  _______,  _______),
 
     [WIN_BASE] = LAYOUT_90_ansi(
