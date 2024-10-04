@@ -16,6 +16,13 @@
 
 #pragma once
 
+// custom
+#define TAPPING_TERM 220
+#define QUICK_TAP_TERM 110
+#define PERMISSIVE_HOLD
+
+// #define TAPPING_TERM_PER_KEY
+
 #ifdef LED_MATRIX_ENABLE
 /* LED Matrix Driver Configuration */
 #    define DRIVER_COUNT 1
