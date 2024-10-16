@@ -17,8 +17,8 @@
 #pragma once
 
 // custom
-#define TAPPING_TERM 220
-#define QUICK_TAP_TERM 110
+#define TAPPING_TERM 300
+#define QUICK_TAP_TERM 150
 #define PERMISSIVE_HOLD
 
 // #define TAPPING_TERM_PER_KEY
