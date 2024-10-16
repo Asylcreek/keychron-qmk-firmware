@@ -24,7 +24,7 @@ enum layers {
     SHORTCUTS,
 };
 
-enum custom_macros { LOG_OUT = SAFE_RANGE, N_FD_BK };
+enum custom_macros { LOG_OUT = SAFE_RANGE, N_FD_BK, HOMEROW, HOMEROW_SCROLL };
 
 // Left-hand home row mods
 #define HOME_A LSFT_T(KC_A)
@@ -59,6 +59,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_LGUI);
                 return false;
             }
+
+        case HOMEROW:
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_LSFT);
+                register_code(KC_SPC);
+                unregister_code(KC_SPC);
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LGUI);
+                return false;
+            }
+
+        case HOMEROW_SCROLL:
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_LSFT);
+                register_code(KC_J);
+                unregister_code(KC_J);
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LGUI);
+                return false;
+            }
     }
     return true;
 };
@@ -72,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MC_3,       KC_CAPS,  HOME_A,   KC_S,   HOME_D,   HOME_F,   KC_G,      KC_H,     HOME_J,   HOME_K,   KC_L,   HOME_SCLN,KC_QUOT,  KC_ENT,   KC_HOME,
         MC_4,       _______,  KC_Z,     KC_X,   KC_C,   KC_V,    KC_B,     MO(MAC_FN),     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  _______,  KC_UP,
         /* MC_4,       KC_LSFT,            KC_Z,     KC_X,   KC_C,   KC_V,    KC_B,     MO(MAC_FN),     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,  KC_UP, */
-        MC_5,       _______,  _______,  MO(MAC_FN), LT(SHORTCUTS,KC_SPC),  KC_ESC,           KC_SPC,     _______,        _______,            KC_LEFT,  KC_DOWN,  KC_RGHT),
+        MC_5,       _______,  _______,  MO(MAC_FN), LT(SHORTCUTS,KC_SPC),  KC_ESC,           KC_SPC,     HOMEROW,        HOMEROW_SCROLL,            KC_LEFT,  KC_DOWN,  KC_RGHT),
         /* MC_5,       KC_LCTL,  KC_LOPTN,           KC_LCMMD, KC_SPC,  KC_ESC,           KC_SPC,             KC_RCMMD,           KC_RCTL,            KC_LEFT,  KC_DOWN,  KC_RGHT), */
 
     [MAC_FN] = LAYOUT_90_ansi(
