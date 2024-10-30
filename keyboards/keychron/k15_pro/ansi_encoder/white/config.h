@@ -20,6 +20,8 @@
 #define TAPPING_TERM 300
 #define QUICK_TAP_TERM 150
 #define PERMISSIVE_HOLD
+#define ONESHOT_TAP_TOGGLE 2 /* Tapping this number of times holds the key until tapped once again. */
+#define ONESHOT_TIMEOUT 5000 /* Time (in ms) before the one shot key is released */
 
 // #define TAPPING_TERM_PER_KEY
 
@@ -53,6 +55,5 @@
 #    define PHASE_CHANNEL MSKPHASE_6CHANNEL
 
 /* Set LED driver current */
-#    define CKLED2001_CURRENT_TUNE \
-        { 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28 }
+#    define CKLED2001_CURRENT_TUNE {0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28, 0x28}
 #endif
