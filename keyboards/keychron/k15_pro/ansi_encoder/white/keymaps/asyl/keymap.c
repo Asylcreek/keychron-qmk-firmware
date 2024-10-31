@@ -16,7 +16,7 @@
 
 #include QMK_KEYBOARD_H
 
-enum layers { MAC_BASE, MAC_FN, WIN_BASE, WIN_FN, SHORTCUTS, SHIFTED, SYM, CMD };
+enum layers { MAC_BASE, MAC_FN, WIN_BASE, WIN_FN, SHORTCUTS, SHIFTED, SYM, CMD, SHORTS };
 
 enum custom_macros { LOG_OUT = SAFE_RANGE, N_FD_BK, HOMEROW, HOMEROW_SCROLL };
 
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         N_FD_BK,    KC_LOPT,          KC_1,              KC_2,     KC_3,                  KC_4,     KC_5,      KC_6,      KC_7,     KC_8,     KC_9,     KC_0,     KC_NO,    KC_NO,   KC_NO,            KC_PGUP,
         MC_2,       KC_TAB,         HOME_B,            KC_L,     KC_D,                  KC_W,     KC_Z,      KC_QUOTE,  KC_F,     KC_O,     KC_U,     HOME_J,     KC_SCLN,  KC_NO,   KC_NO,            KC_PGDN,
         MC_3,       OSL(SHIFTED),   KC_N,              KC_R,     KC_T,                  KC_S,     KC_G,      KC_Y,      KC_H,     KC_A,     KC_E,     KC_I,     KC_COMM,  KC_NO,   KC_HOME,
-        MC_4,       KC_LGUI,          KC_Q,              KC_X,     KC_M,                  KC_C,     KC_V,      MO(MAC_FN),KC_K,     KC_P,     KC_DOT,   KC_MINS,  KC_SLSH,  KC_NO,  KC_UP,
+        KC_LGUI,    MO(SHORTS),  KC_Q,              KC_X,     KC_M,                  KC_C,     KC_V,      MO(MAC_FN),KC_K,     KC_P,     KC_DOT,   KC_MINS,  KC_SLSH,  KC_NO,  KC_UP,
         MC_5,       HOMEROW,  HOMEROW_SCROLL,    LT(SYM,KC_ESC),   LT(CMD,KC_ENT),  KC_LSFT,  KC_SPC,    KC_BSPC,    KC_NO,                                                 KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [MAC_FN] = LAYOUT_90_ansi(
@@ -113,14 +113,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,    _______,            _______,  _______,  _______,  _______,   BAT_LVL,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,   _______,  _______,  _______,
         _______,    _______,  _______,            _______,  _______,  _______,             _______,            _______,            _______,             _______,  _______,  _______),
 
-    [SHORTCUTS] = LAYOUT_90_ansi(
-        _______,    _______,  _______,    _______,    _______,    _______,    _______,     _______,    _______,    _______,    _______,    _______,   _______,   _______,   _______,            _______,
-        _______,    _______,  _______,  _______,  _______,  _______,  _______,   _______,  LALT(KC_7),  LALT(KC_8),  LALT(KC_9),  LALT(KC_0),  _______,  _______,  _______,            _______,
-        _______,    LCTL(KC_TAB),  LGUI(KC_Q),  LGUI(KC_W),    _______,  LGUI(KC_R),  LGUI(KC_T),   _______,  LCTL(KC_U),  _______,  _______,  _______,  _______,  _______,  _______,            _______,
-        _______,    _______,  LGUI(KC_A),  _______,  LCTL(KC_D),  LGUI(KC_F),  _______,   HYPR(KC_H),  LAG(KC_J),  _______,  _______,   _______,    _______,            _______,            _______,
-        _______,    _______,            _______,  LGUI(KC_X),  LGUI(KC_C),  LGUI(KC_V),   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,    _______,  _______,            _______,  _______,  _______,             _______,            _______,            _______,            _______,  _______,  _______),
-
     [SHIFTED] = LAYOUT_90_ansi(
         KC_TRNS,    KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,
         KC_TRNS,    KC_TRNS,        S(KC_1),  S(KC_2),  S(KC_3),   S(KC_4),     S(KC_5),      S(KC_6),      S(KC_7),     S(KC_8),     S(KC_9),     S(KC_0),     KC_TRNS,    KC_TRNS,   KC_TRNS,            KC_TRNS,
@@ -144,6 +136,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,    KC_TRNS,  G(KC_N),  G(KC_R),  G(KC_T),  G(KC_S),  G(S(KC_T)),   G(S(KC_SPC)),  G(KC_SPC),  G(KC_A),   G(KC_E),    G(KC_I),   KC_TRNS,              KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,  G(KC_Q),  G(KC_X),  G(KC_M),  G(KC_C),   G(KC_V),  KC_TRNS,  G(S(KC_J)),  G(KC_P),  KC_LEFT,  KC_RIGHT,  KC_TRNS,  KC_TRNS,  KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,             G(KC_ENT),            G(KC_BSPC),            KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
+
+    [SHORTS] = LAYOUT_90_ansi(
+        KC_TRNS,    KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   A(KC_COMM),  A(KC_7),  A(KC_8),  A(KC_9),  A(KC_0),  A(KC_SLSH),  KC_TRNS,  KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  A(KC_U),  A(KC_J),  A(KC_TAB),  KC_TRNS,  KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_LEFT,  KC_UP,  KC_DOWN,   KC_RIGHT,    A(KC_K),   KC_TRNS,              KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,            KC_LSFT,  KC_TRNS,  KC_LALT,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  C(S(KC_C)),  C(KC_TAB),  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,    KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,             A(KC_ENT),            A(KC_BSPC),            KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -156,5 +156,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [SHIFTED]   = { ENCODER_CCW_CW(BL_DOWN, BL_UP) },
     [SYM]   = { ENCODER_CCW_CW(BL_DOWN, BL_UP) },
     [CMD]   = { ENCODER_CCW_CW(BL_DOWN, BL_UP) },
+    [SHORTS]   = { ENCODER_CCW_CW(BL_DOWN, BL_UP) },
 };
 #endif // ENCODER_MAP_ENABLE
