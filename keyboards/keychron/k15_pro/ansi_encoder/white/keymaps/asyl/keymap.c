@@ -20,6 +20,28 @@ enum layers { MAC_BASE, MAC_FN, WIN_BASE, WIN_FN, SHORTCUTS, SHIFTED, SYM, CMD, 
 
 enum custom_macros { LOG_OUT = SAFE_RANGE, N_FD_BK, HOMEROW, HOMEROW_SCROLL };
 
+// define combo names
+enum combos {
+    COMBO_LCTL,
+    COMBO_LGUI,
+    COMBO_LALT,
+    // more here...
+
+    COMBO_LENGTH // nifty trick to avoid manually specifying how many combos you have
+};
+
+uint16_t COMBO_LEN = COMBO_LENGTH; // nifty trick continued
+
+const uint16_t PROGMEM TS_GUI[]  = {KC_T, KC_S, COMBO_END};
+const uint16_t PROGMEM RT_OPT[]  = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM RTS_SFT[] = {KC_R, KC_T, KC_S, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(TS_GUI, KC_LGUI),  //
+    COMBO(RT_OPT, KC_LALT),  //
+    COMBO(RTS_SFT, KC_LSFT), //
+};
+
 // Left-hand home row mods
 /* #define HOME_A LSFT_T(KC_A) */
 #define HOME_B LCTL_T(KC_B)
@@ -141,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,    KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   A(KC_COMM),  A(KC_7),  A(KC_8),  A(KC_9),  A(KC_0),  A(KC_SLSH),  KC_TRNS,  KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  A(KC_U),  A(KC_J),  A(KC_TAB),  KC_TRNS,  KC_TRNS,            KC_TRNS,
-        KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_LEFT,  KC_UP,  KC_DOWN,   KC_RIGHT,    A(KC_K),   KC_TRNS,              KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RIGHT,    A(KC_K),   KC_TRNS,              KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,            KC_LSFT,  KC_TRNS,  KC_LALT,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  C(S(KC_C)),  C(KC_TAB),  KC_TRNS,  KC_TRNS,  KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,             A(KC_ENT),            A(KC_BSPC),            KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
 };
