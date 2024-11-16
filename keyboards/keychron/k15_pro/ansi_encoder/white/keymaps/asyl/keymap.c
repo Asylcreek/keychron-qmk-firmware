@@ -18,7 +18,7 @@
 
 enum layers { MAC_BASE, MAC_FN, WIN_BASE, WIN_FN, SHORTCUTS, SHIFTED, SYM, CMD, SHORTS };
 
-enum custom_macros { LOG_OUT = SAFE_RANGE, N_FD_BK, HOMEROW, HOMEROW_SCROLL };
+enum custom_macros { LOG_OUT = SAFE_RANGE, N_FD_BK, HOMEROW, HOMEROW_SCROLL, AE_SERVICE };
 
 // define combo names
 enum combos {
@@ -100,6 +100,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_LGUI);
                 return false;
             }
+
+        case AE_SERVICE:
+            if (record->event.pressed) {
+                register_code(KC_LOPT);
+                register_code(KC_LSFT);
+                register_code(KC_SCLN);
+                unregister_code(KC_SCLN);
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LOPT);
+                return false;
+            }
     }
     return true;
 };
@@ -166,9 +177,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SHORTS] = LAYOUT_90_ansi(
         KC_TRNS,    KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  A(KC_7),  A(KC_8),  A(KC_9),  A(KC_0),  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-        KC_TRNS,    A(KC_TAB),  KC_TRNS,  KC_TRNS,    KC_TRNS,  A(KC_COMM),  A(KC_SLSH),   KC_TRNS,  KC_TRNS,  KC_TRNS,  A(KC_U),  A(KC_J),  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
+        KC_TRNS,    A(KC_TAB),  A(S(KC_7)),  A(S(KC_U)),    A(S(KC_0)),  A(S(KC_8)),  A(S(KC_9)),   A(KC_LEFT),  A(KC_UP),  A(KC_DOWN),  A(KC_RIGHT),  A(KC_J),  AE_SERVICE,  KC_TRNS,  KC_TRNS,            KC_TRNS,
         KC_TRNS,    C(KC_TAB),  A(KC_7),  A(KC_U),  A(KC_0),  A(KC_8),  A(KC_9),   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RIGHT,    A(KC_K),   KC_TRNS,              KC_TRNS,            KC_TRNS,
-        KC_TRNS,    KC_TRNS,            KC_LSFT,  C(S(KC_C)),  KC_LALT,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,    KC_TRNS,            KC_LSFT,  C(S(KC_C)),  KC_LALT,  A(KC_COMM),   A(KC_SLSH),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,            A(KC_BSPC),  A(KC_ENT),  KC_TRNS,             KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
 };
 
