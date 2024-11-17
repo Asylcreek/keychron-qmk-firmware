@@ -63,7 +63,6 @@ const uint16_t PROGMEM TS_GUI[]      = {KC_T, KC_S, COMBO_END};
 const uint16_t PROGMEM RT_OPT[]      = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM RTS_SFT[]     = {KC_R, KC_T, KC_S, COMBO_END};
 const uint16_t PROGMEM ENTSPC_TERM[] = {LT(SHIFTED, KC_ENT), LT(SHORTS, KC_SPC), COMBO_END};
-/* const uint16_t PROGMEM ENTSPC_CTL[] = {LT(SHIFTED, KC_ENT), LT(SHORTS, KC_SPC), COMBO_END}; */
 
 combo_t key_combos[] = {
     COMBO(TS_GUI, KC_LGUI),       //
@@ -71,18 +70,6 @@ combo_t key_combos[] = {
     COMBO(RTS_SFT, KC_LSFT),      //
     COMBO(ENTSPC_TERM, MO(TERM)), //
 };
-
-// Left-hand home row mods
-/* #define HOME_A LSFT_T(KC_A) */
-/* #define HOME_B LCTL_T(KC_B) */
-/* #define HOME_D LALT_T(KC_D) */
-/* #define HOME_F LGUI_T(KC_F) */
-
-// Right-hand home row mods
-/* #define HOME_J RGUI_T(KC_J) */
-/* #define HOME_K LALT_T(KC_K) */
-/* #define HOME_J RCTL_T(KC_J) */
-/* #define HOME_SCLN RSFT_T(KC_SCLN) */
 
 // custom mod
 void TMUX(uint16_t keycode) {
@@ -277,7 +264,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_BASE] = LAYOUT_90_ansi(
         KC_MUTE,    KC_ESC,         KC_BRID,           KC_BRIU,  KC_MCTL,               KC_LPAD,  BL_DOWN,   BL_UP,     KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  LOG_OUT,             KC_DEL,
         N_FD_BK,    KC_LOPT,          KC_1,              KC_2,     KC_3,                  KC_4,     KC_5,      KC_6,      KC_7,     KC_8,     KC_9,     KC_0,     KC_NO,    KC_NO,   KC_NO,            KC_PGUP,
-        /* MC_2,       KC_TAB,         HOME_B,            KC_L,     KC_D,                  KC_W,     KC_Z,      KC_QUOTE,  KC_F,     KC_O,     KC_U,     HOME_J,     KC_SCLN,  KC_NO,   KC_NO,            KC_PGDN, */
         MC_2,       KC_TAB,         KC_B,            KC_L,     KC_D,                  KC_W,     KC_Z,      KC_QUOTE,  KC_F,     KC_O,     KC_U,     KC_J,     KC_SCLN,  KC_NO,   KC_NO,            KC_PGDN,
         MC_3,       TG(SHIFTED),   KC_N,              KC_R,     KC_T,                  KC_S,     KC_G,      KC_Y,      KC_H,     KC_A,     KC_E,     KC_I,     KC_COMM,  KC_NO,   KC_HOME,
         KC_LGUI,    KC_NO,  KC_Q,              KC_X,     KC_M,                  KC_C,     KC_V,      MO(MAC_FN),KC_K,     KC_P,     KC_DOT,   KC_MINS,  KC_SLSH,  KC_NO,  KC_UP,
