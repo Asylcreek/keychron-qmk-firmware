@@ -16,9 +16,35 @@
 
 #include QMK_KEYBOARD_H
 
-enum layers { MAC_BASE, MAC_FN, WIN_BASE, WIN_FN, SHORTCUTS, SHIFTED, SYM, CMD, SHORTS };
+enum layers { MAC_BASE, MAC_FN, WIN_BASE, WIN_FN, SHORTCUTS, SHIFTED, SYM, CMD, SHORTS, TERM };
 
-enum custom_macros { LOG_OUT = SAFE_RANGE, N_FD_BK, HOMEROW, HOMEROW_SCROLL, AE_SERVICE };
+enum custom_macros {
+    LOG_OUT = SAFE_RANGE, //
+    N_FD_BK,              //
+    HOMEROW,              //
+    HOMEROW_SCROLL,       //
+    AE_SERVICE,           //
+    T_SESSIONS,           //
+    T_NEW_WIN,            //
+    T_1,                  //
+    T_2,                  //
+    T_3,                  //
+    T_4,                  //
+    T_5,                  //
+    T_6,                  //
+    T_7,                  //
+    T_8,                  //
+    T_9,                  //
+    T_0,                  //
+    T_COMM,               //
+    T_QUOT,               //
+    T_l,                  //
+    T_QUES,               //
+    T_PERCENT,            //
+    T_2QUOT,              //
+    T_L,                  //
+    T_LEADER,             //
+};
 
 // define combo names
 enum combos {
@@ -33,16 +59,17 @@ enum combos {
 
 uint16_t COMBO_LEN = COMBO_LENGTH; // nifty trick continued
 
-const uint16_t PROGMEM TS_GUI[]     = {KC_T, KC_S, COMBO_END};
-const uint16_t PROGMEM RT_OPT[]     = {KC_R, KC_T, COMBO_END};
-const uint16_t PROGMEM RTS_SFT[]    = {KC_R, KC_T, KC_S, COMBO_END};
-const uint16_t PROGMEM ENTSPC_CTL[] = {LT(SHIFTED, KC_ENT), LT(SHORTS, KC_SPC), COMBO_END};
+const uint16_t PROGMEM TS_GUI[]      = {KC_T, KC_S, COMBO_END};
+const uint16_t PROGMEM RT_OPT[]      = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM RTS_SFT[]     = {KC_R, KC_T, KC_S, COMBO_END};
+const uint16_t PROGMEM ENTSPC_TERM[] = {LT(SHIFTED, KC_ENT), LT(SHORTS, KC_SPC), COMBO_END};
+/* const uint16_t PROGMEM ENTSPC_CTL[] = {LT(SHIFTED, KC_ENT), LT(SHORTS, KC_SPC), COMBO_END}; */
 
 combo_t key_combos[] = {
-    COMBO(TS_GUI, KC_LGUI),     //
-    COMBO(RT_OPT, KC_LALT),     //
-    COMBO(RTS_SFT, KC_LSFT),    //
-    COMBO(ENTSPC_CTL, KC_LCTL), //
+    COMBO(TS_GUI, KC_LGUI),       //
+    COMBO(RT_OPT, KC_LALT),       //
+    COMBO(RTS_SFT, KC_LSFT),      //
+    COMBO(ENTSPC_TERM, MO(TERM)), //
 };
 
 // Left-hand home row mods
@@ -56,6 +83,16 @@ combo_t key_combos[] = {
 /* #define HOME_K LALT_T(KC_K) */
 /* #define HOME_J RCTL_T(KC_J) */
 /* #define HOME_SCLN RSFT_T(KC_SCLN) */
+
+// custom mod
+void TMUX(uint16_t keycode) {
+    register_code(KC_LCTL);
+    register_code(KC_A);
+    unregister_code(KC_A);
+    unregister_code(KC_LCTL);
+    register_code16(keycode);
+    unregister_code16(keycode);
+}
 
 // Macro Definitions
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -109,6 +146,126 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_SCLN);
                 unregister_code(KC_LSFT);
                 unregister_code(KC_LOPT);
+                return false;
+            }
+
+        case T_SESSIONS:
+            if (record->event.pressed) {
+                TMUX(KC_S);
+                return false;
+            }
+
+        case T_NEW_WIN:
+            if (record->event.pressed) {
+                TMUX(KC_C);
+                return false;
+            }
+
+        case T_1:
+            if (record->event.pressed) {
+                TMUX(KC_1);
+                return false;
+            }
+
+        case T_2:
+            if (record->event.pressed) {
+                TMUX(KC_2);
+                return false;
+            }
+
+        case T_3:
+            if (record->event.pressed) {
+                TMUX(KC_3);
+                return false;
+            }
+
+        case T_4:
+            if (record->event.pressed) {
+                TMUX(KC_4);
+                return false;
+            }
+
+        case T_5:
+            if (record->event.pressed) {
+                TMUX(KC_5);
+                return false;
+            }
+
+        case T_6:
+            if (record->event.pressed) {
+                TMUX(KC_6);
+                return false;
+            }
+
+        case T_7:
+            if (record->event.pressed) {
+                TMUX(KC_7);
+                return false;
+            }
+
+        case T_8:
+            if (record->event.pressed) {
+                TMUX(KC_8);
+                return false;
+            }
+
+        case T_9:
+            if (record->event.pressed) {
+                TMUX(KC_9);
+                return false;
+            }
+
+        case T_0:
+            if (record->event.pressed) {
+                TMUX(KC_0);
+                return false;
+            }
+
+        case T_QUOT:
+            if (record->event.pressed) {
+                TMUX(KC_QUOT);
+                return false;
+            }
+
+        case T_COMM:
+            if (record->event.pressed) {
+                TMUX(KC_COMM);
+                return false;
+            }
+
+        case T_l:
+            if (record->event.pressed) {
+                TMUX(KC_L);
+                return false;
+            }
+
+        case T_L:
+            if (record->event.pressed) {
+                TMUX(S(KC_L));
+                return false;
+            }
+
+        case T_QUES:
+            if (record->event.pressed) {
+                TMUX(S(KC_SLSH));
+                return false;
+            }
+
+        case T_2QUOT:
+            if (record->event.pressed) {
+                TMUX(S(KC_QUOT));
+                return false;
+            }
+
+        case T_PERCENT:
+            if (record->event.pressed) {
+                TMUX(S(KC_5));
+                return false;
+            }
+
+        case T_LEADER:
+            if (record->event.pressed) {
+                TMUX(KC_NO);
                 return false;
             }
     }
@@ -181,6 +338,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,    C(KC_TAB),  A(KC_7),  A(KC_U),  A(KC_0),  A(KC_8),  A(KC_9),   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RIGHT,    A(KC_K),   KC_TRNS,              KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,            KC_LSFT,  C(S(KC_C)),  KC_LALT,  A(KC_COMM),   A(KC_SLSH),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,            A(KC_BSPC),  A(KC_ENT),  KC_TRNS,             KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
+
+    [TERM] = LAYOUT_90_ansi(
+        KC_TRNS,    KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,  T_1,  T_2,  T_3,  T_4,  T_5,   T_6,  T_7,  T_8,  T_9,  T_0,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
+        KC_TRNS,    C(KC_TAB),  T_QUES,  C(KC_L),    C(KC_D),  C(KC_W),  G(C(KC_N)),   C(KC_QUOT),  T_QUOT,  C(KC_O),  C(KC_U),  C(KC_J),  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
+        KC_TRNS,    T_LEADER,  C(KC_N),  C(KC_R),  T_PERCENT,  T_2QUOT,  T_SESSIONS,   T_NEW_WIN,  C(KC_H),  T_COMM,   T_l,   T_L,   KC_TRNS,              KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,            C(KC_Q),  KC_TRNS,  KC_TRNS,  C(KC_C),   C(KC_V),  KC_TRNS,  C(KC_K),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,    KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -194,5 +359,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [SYM]   = { ENCODER_CCW_CW(BL_DOWN, BL_UP) },
     [CMD]   = { ENCODER_CCW_CW(BL_DOWN, BL_UP) },
     [SHORTS]   = { ENCODER_CCW_CW(BL_DOWN, BL_UP) },
+    [TERM]   = { ENCODER_CCW_CW(BL_DOWN, BL_UP) },
 };
 #endif // ENCODER_MAP_ENABLE
