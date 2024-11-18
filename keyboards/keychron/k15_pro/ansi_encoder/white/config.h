@@ -17,14 +17,14 @@
 #pragma once
 
 // custom
-#define TAPPING_TERM 200
-#define QUICK_TAP_TERM 100
+#define TAPPING_TERM 300
+#define QUICK_TAP_TERM 150
 #define PERMISSIVE_HOLD
 #define ONESHOT_TAP_TOGGLE 2 /* Tapping this number of times holds the key until tapped once again. */
 #define ONESHOT_TIMEOUT 5000 /* Time (in ms) before the one shot key is released */
-#define COMBO_TERM 50        // how quickly all combo keys must be pressed in succession to trigger
-// #define COMBO_MUST_HOLD_MODS // if a combo triggers a modifier, only trigger when the combo is held
-// #define COMBO_HOLD_TERM 150  // how long at least one of the combo keys must be held to trigger
+#define COMBO_TERM 25        // how quickly all combo keys must be pressed in succession to trigger
+#define COMBO_MUST_HOLD_MODS // if a combo triggers a modifier, only trigger when the combo is held
+#define COMBO_HOLD_TERM 175  // how long at least one of the combo keys must be held to trigger
 
 // #define TAPPING_TERM_PER_KEY
 
