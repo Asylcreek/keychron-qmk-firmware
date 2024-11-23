@@ -329,7 +329,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,    KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,  T_1,  T_2,  T_3,  T_4,  T_5,   T_6,  T_7,  T_8,  T_9,  T_0,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
         KC_TRNS,    C(KC_TAB),  T_QUES,  C(KC_L),    C(KC_D),  C(KC_W),  G(C(KC_N)),   C(KC_QUOT),  T_QUOT,  C(KC_O),  C(KC_U),  C(KC_J),  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-        KC_TRNS,    T_LEADER,  C(KC_N),  C(KC_R),  T_PERCENT,  T_2QUOT,  T_SESSIONS,   T_NEW_WIN,  C(KC_H),  T_COMM,   T_l,   T_L,   KC_TRNS,              KC_TRNS,            KC_TRNS,
+        KC_TRNS,    T_LEADER,  C(KC_N),  C(KC_R),  T_PERCENT,  T_2QUOT,  T_SESSIONS,   T_NEW_WIN,  C(KC_H),  T_COMM,   C(KC_E),   T_l,   T_L,              KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,            C(KC_Q),  KC_TRNS,  KC_TRNS,  C(KC_C),   C(KC_V),  KC_TRNS,  C(KC_K),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
 };
