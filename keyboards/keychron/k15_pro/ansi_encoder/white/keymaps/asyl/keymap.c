@@ -66,10 +66,10 @@ const uint16_t PROGMEM RTS_SFT[]     = {KC_R, KC_T, KC_S, COMBO_END};
 const uint16_t PROGMEM ENTSPC_TERM[] = {LT(SHIFTED, KC_ENT), LT(SHORTS, KC_SPC), COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(TS_GUI, KC_LGUI),       //
-    COMBO(RT_OPT, KC_LALT),       //
-    COMBO(RTS_SFT, KC_LSFT),      //
-    COMBO(ENTSPC_TERM, MO(TERM)), //
+    COMBO(TS_GUI, KC_LGUI),        //
+    COMBO(RT_OPT, KC_LALT),        //
+    COMBO(RTS_SFT, KC_LSFT),       //
+    COMBO(ENTSPC_TERM, OSL(TERM)), //
 };
 
 // custom mod
