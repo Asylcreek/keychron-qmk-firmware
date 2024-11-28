@@ -272,7 +272,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MUTE,    KC_ESC,         KC_BRID,           KC_BRIU,  KC_MCTL,               KC_LPAD,  BL_DOWN,   BL_UP,     KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  LOG_OUT,             KC_DEL,
         N_FD_BK,    KC_LOPT,          KC_1,              KC_2,     KC_3,                  KC_4,     KC_5,      KC_6,      KC_7,     KC_8,     KC_9,     KC_0,     KC_NO,    KC_NO,   KC_NO,            KC_PGUP,
         MC_2,       KC_TAB,         KC_B,            KC_L,     KC_D,                  KC_W,     KC_Z,      KC_QUOTE,  KC_F,     KC_O,     KC_U,     KC_J,     KC_SCLN,  KC_NO,   KC_NO,            KC_PGDN,
-        MC_3,       TG(SHIFTED),   KC_N,              KC_R,     KC_T,                  KC_S,     KC_G,      KC_Y,      KC_H,     KC_A,     KC_E,     KC_I,     KC_COMM,  KC_NO,   KC_HOME,
+        MC_3,       KC_NO,   KC_N,              KC_R,     KC_T,                  KC_S,     KC_G,      KC_Y,      KC_H,     KC_A,     KC_E,     KC_I,     KC_COMM,  KC_NO,   KC_HOME,
         KC_LGUI,    KC_NO,  KC_Q,              KC_X,     KC_M,                  KC_C,     KC_V,      MO(MAC_FN),KC_K,     KC_P,     KC_DOT,   KC_MINS,  KC_SLSH,  KC_NO,  KC_UP,
         MC_5,       HOMEROW,  HOMEROW_SCROLL,    LT(CMD,KC_ESC),   LT(SHIFTED,KC_ENT),  KC_LSFT,  LT(SHORTS,KC_SPC),    LT(SYM,KC_BSPC),    KC_NO,                                                 KC_LEFT,  KC_DOWN,  KC_RGHT),
 
@@ -304,9 +304,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,    KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,
         KC_TRNS,    KC_TRNS,        KC_1,  KC_2,  KC_3,   KC_4,     KC_5,      KC_6,      KC_7,     KC_8,     KC_9,     KC_0,     KC_TRNS,    KC_TRNS,   KC_TRNS,            KC_TRNS,
         KC_TRNS,    S(KC_TAB),         S(KC_B),  S(KC_L),  S(KC_D),   S(KC_W),     S(KC_Z),      S(KC_MINS),   S(KC_F),     S(KC_O),     S(KC_U),     S(KC_J),     S(KC_SCLN),  KC_TRNS,   KC_TRNS,            KC_TRNS,
-        KC_TRNS,    KC_TRNS,   S(KC_N),  S(KC_R),  S(KC_T),   S(KC_S),     S(KC_G),      S(KC_Y),      S(KC_H),     S(KC_A),     S(KC_E),     S(KC_I),     S(KC_SLSH),  KC_TRNS,   KC_TRNS,
+        KC_TRNS,    S(KC_ENT),   S(KC_N),  S(KC_R),  S(KC_T),   S(KC_S),     S(KC_G),      S(KC_Y),      S(KC_H),     S(KC_A),     S(KC_E),     S(KC_I),     S(KC_SLSH),  KC_TRNS,   KC_TRNS,
         KC_TRNS,    KC_TRNS,        S(KC_Q),  S(KC_X),  S(KC_M),   S(KC_C),     S(KC_V),KC_TRNS,S(KC_K),    S(KC_P),     S(KC_DOT),   S(KC_QUOT),  S(KC_COMM),  KC_TRNS,  KC_TRNS,
-        KC_TRNS,    KC_TRNS, KC_TRNS,    KC_TRNS,   S(KC_ENT),  KC_TRNS,  KC_TRNS,    KC_TRNS,     KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
+        KC_TRNS,    KC_TRNS, KC_TRNS,    KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,     KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
 
     [SYM] = LAYOUT_90_ansi(
         KC_TRNS,    KC_TRNS,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_TRNS,            KC_TRNS,
