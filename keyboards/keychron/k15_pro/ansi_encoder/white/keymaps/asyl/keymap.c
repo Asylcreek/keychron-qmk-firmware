@@ -302,7 +302,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [SHIFTED] = LAYOUT_90_ansi(
         KC_TRNS,    KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,
-        KC_TRNS,    KC_TRNS,        S(KC_1),  S(KC_2),  S(KC_3),   S(KC_4),     S(KC_5),      S(KC_6),      S(KC_7),     S(KC_8),     S(KC_9),     S(KC_0),     KC_TRNS,    KC_TRNS,   KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,        KC_1,  KC_2,  KC_3,   KC_4,     KC_5,      KC_6,      KC_7,     KC_8,     KC_9,     KC_0,     KC_TRNS,    KC_TRNS,   KC_TRNS,            KC_TRNS,
         KC_TRNS,    S(KC_TAB),         S(KC_B),  S(KC_L),  S(KC_D),   S(KC_W),     S(KC_Z),      S(KC_MINS),   S(KC_F),     S(KC_O),     S(KC_U),     S(KC_J),     S(KC_SCLN),  KC_TRNS,   KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,   S(KC_N),  S(KC_R),  S(KC_T),   S(KC_S),     S(KC_G),      S(KC_Y),      S(KC_H),     S(KC_A),     S(KC_E),     S(KC_I),     S(KC_SLSH),  KC_TRNS,   KC_TRNS,
         KC_TRNS,    KC_TRNS,        S(KC_Q),  S(KC_X),  S(KC_M),   S(KC_C),     S(KC_V),KC_TRNS,S(KC_K),    S(KC_P),     S(KC_DOT),   S(KC_QUOT),  S(KC_COMM),  KC_TRNS,  KC_TRNS,
@@ -311,9 +311,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYM] = LAYOUT_90_ansi(
         KC_TRNS,    KC_TRNS,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_TRNS,            KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-        KC_TRNS,    KC_TRNS,  S(KC_EQL),  S(KC_BSLS),    S(KC_RBRC),  S(KC_LBRC),  S(KC_GRAVE),   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-        KC_TRNS,    KC_TRNS,  KC_EQL,  KC_BSLS,  KC_RBRC,  KC_LBRC,  KC_GRAVE,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,    KC_TRNS,   KC_TRNS,              KC_TRNS,            KC_TRNS,
-        KC_TRNS,    KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,    KC_TRNS,  S(KC_8),  S(KC_1),  KC_GRAVE,  S(KC_4),  S(KC_BSLS),   KC_TRNS,  S(KC_6),  S(KC_2),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,  KC_EQL,   S(KC_9),  S(KC_COMM),  S(KC_LBRC),  KC_LBRC,   KC_RBRC,  S(KC_RBRC),  S(KC_DOT),   S(KC_0),    S(KC_EQL),   KC_TRNS,              KC_TRNS,            KC_TRNS,
+        KC_TRNS,    KC_TRNS,  S(KC_3),  S(KC_7),  S(KC_GRAVE),  S(KC_5),   KC_BSLS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
         KC_TRNS,    KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS),
 
     [CMD] = LAYOUT_90_ansi(
