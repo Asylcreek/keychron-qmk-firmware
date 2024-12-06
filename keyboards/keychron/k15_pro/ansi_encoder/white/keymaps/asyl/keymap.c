@@ -45,7 +45,8 @@ enum custom_macros {
     T_2QUOT,              //
     T_L,                  //
     T_LEADER,             //
-    T_D                   //
+    T_D,                  //
+    DND                   //
 };
 
 // define combo names
@@ -203,6 +204,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 TMUX(KC_D);
                 return false;
             }
+
+        case DND:
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_LCTL);
+                register_code(KC_LOPT);
+                register_code(KC_LSFT);
+                register_code(KC_D);
+                unregister_code(KC_D);
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LOPT);
+                unregister_code(KC_LCTL);
+                unregister_code(KC_LGUI);
+                return false;
+            }
     }
     return true;
 };
@@ -210,8 +226,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_BASE] = LAYOUT_90_ansi(
-        KC_MUTE,    KC_ESC,         KC_BRID,           KC_BRIU,  KC_MCTL,               KC_LPAD,  BL_DOWN,   BL_UP,     KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  LOG_OUT,             KC_DEL,
-        N_FD_BK,    KC_LOPT,          KC_NO,              KC_NO,     KC_NO,                  KC_NO,     KC_NO,      KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,    KC_NO,   KC_NO,            KC_PGUP,
+        KC_MUTE,    KC_ESC,         KC_NO,           KC_NO,  KC_NO,               KC_NO,  KC_NO,   KC_NO,     KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,             KC_DEL,
+        N_FD_BK,    LOG_OUT,          KC_BRID,              KC_BRIU,     DND,                  BL_DOWN,     BL_UP,      KC_NO,      KC_MPRV,     KC_MPLY,     KC_MNXT,     KC_MUTE,     KC_VOLD,    KC_VOLU,   KC_NO,            KC_PGUP,
         MC_2,       KC_TAB,         KC_B,            KC_L,     KC_D,                  KC_W,     KC_Z,      KC_QUOTE,  KC_F,     KC_O,     KC_U,     KC_J,     KC_SCLN,  KC_NO,   KC_NO,            KC_PGDN,
         MC_3,       KC_NO,   KC_N,              KC_R,     KC_T,                  KC_S,     KC_G,      KC_Y,      KC_H,     KC_A,     KC_E,     KC_I,     KC_COMM,  KC_NO,   KC_HOME,
         KC_LGUI,    KC_NO,  KC_Q,              KC_X,     KC_M,                  KC_C,     KC_V,      MO(MAC_FN),KC_K,     KC_P,     KC_DOT,   KC_MINS,  KC_SLSH,  KC_NO,  KC_UP,
